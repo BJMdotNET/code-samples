@@ -7,18 +7,15 @@ namespace Samples.Common.Exceptions
     {
         public static string Execute(Exception exc)
         {
-            var exceptionMessage = new StringBuilder();
-
-            var currentException = exc;
-            exceptionMessage.Append(currentException.Message);
-
-            while (currentException.InnerException != null)
+            var messages = new List<string>();
+            do
             {
-                exceptionMessage.AppendLine().Append(currentException.Message);
-                currentException = currentException.InnerException;
+                messages.Add(exc.Message);
+                exc = exc.InnerException;
             }
+            while (exc != null);
 
-            return exceptionMessage.ToString();
+            return string.Join(" - ", messages);
         }
     }
 }
