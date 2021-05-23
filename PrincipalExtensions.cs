@@ -77,7 +77,7 @@ namespace Samples.Shared.Security
         {
             try
             {
-                return principal.GetSingleOrDefaultClaimValue(InfrabelClaimTypes.Domain);
+                return principal.GetSingleOrDefaultClaimValue(CustomClaimTypes.Domain);
             }
             catch (Exception exc)
             {
@@ -208,7 +208,7 @@ namespace Samples.Shared.Security
         {
             try
             {
-                return principal.FindFirstClaimValue(InfrabelClaimTypes.Culture)
+                return principal.FindFirstClaimValue(CustomClaimTypes.Culture)
                        ?? CultureHelper.GetDefaultCulture();
             }
             catch (Exception exc)
