@@ -10,10 +10,12 @@ namespace Samples.Common.Extensions
             {
                 return false;
             }
+            
             if (comparison == null)
             {
                 throw new ArgumentNullException(nameof(comparison), $"{nameof(comparison)} cannot be null.");
             }
+            
             return source.Equals(comparison, StringComparison.InvariantCultureIgnoreCase);
         }
         
