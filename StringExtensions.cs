@@ -4,6 +4,19 @@ namespace Samples.Common.Extensions
 {
     public static class StringExtensions
     {
+        public static bool EqualsIgnoringCase(this string source, string comparison)
+        {
+            if (string.IsNullOrEmpty(source))
+            {
+                return false;
+            }
+            if (comparison == null)
+            {
+                throw new ArgumentNullException(nameof(comparison), $"{nameof(comparison)} cannot be null.");
+            }
+            return source.Equals(comparison, StringComparison.InvariantCultureIgnoreCase);
+        }
+        
         public static bool ContainsIgnoringCase(this string source, string substring)
         {
             return Contains(source, substring, StringComparison.InvariantCultureIgnoreCase);
